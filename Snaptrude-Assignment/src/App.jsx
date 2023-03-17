@@ -7,21 +7,14 @@ import Map, {
   NavigationControl,
 } from "react-map-gl";
 import { useState } from "react";
+import NameSearchLocation from "./NameSearchLocation";
 
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoicHJhYi1oYXQxOCIsImEiOiJjbGZiNjVuaGQyeGxnM29yMDU3MGQzaGVhIn0.8eObBAjrqScgVVrmE-pbOQ";
+// const MAPBOX_TOKEN ="pk.eyJ1IjoicHJhYi1oYXQxOCIsImEiOiJjbGZiNjVuaGQyeGxnM29yMDU3MGQzaGVhIn0.8eObBAjrqScgVVrmE-pbOQ";
+const MAPBOX_TOKEN = import.meta.env.VITE_MAP_TOKEN;
+
+
 
 function App() {
-  // const lat = 28.644800
-  // const long = 77.216721
-  // mapboxgl.accessToken =
-  //   "pk.eyJ1IjoicHJhYi1oYXQxOCIsImEiOiJjbGZiNjVuaGQyeGxnM29yMDU3MGQzaGVhIn0.8eObBAjrqScgVVrmE-pbOQ";
-  // const map = new mapboxgl.Map({
-  //   container: "map", // container ID
-  //   style: "mapbox://styles/mapbox/streets-v12", // style URL
-  //   center: [-74.5, 40], // starting position [lng, lat]
-  //   zoom: 10, // starting zoom
-  // });
 
   const [long, setLong] = useState(77.216721);
   const [lat, setLat] = useState(28.6448);
@@ -30,8 +23,6 @@ function App() {
     latitude: lat,
     longitude: long,
     zoom: 10,
-    // width: "100vw",
-    // height: "100vh"
   });
 
   console.log(long, lat);
@@ -68,28 +59,23 @@ function App() {
         <input
           type="text"
           name="longi"
-          placeholder="Enter Longitude..."
+          placeholder="Longitude..."
+          value={long}
           required
         />
         <input
           type="text"
           name="lati"
-          placeholder="Enter Latitude..."
+          placeholder="Latitude..."
+          value={lat}
           required
         />
-        <button type="submit">Go</button>
+        {/* <button type="submit">Go</button> */}
       </form>
       <Map
-        // mapboxAccessToken="pk.eyJ1IjoicHJhYi1oYXQxOCIsImEiOiJjbGZiNjVuaGQyeGxnM29yMDU3MGQzaGVhIn0.8eObBAjrqScgVVrmE-pbOQ"
         {...viewPort}
         onMove={(evt) => setViewPort(evt.viewPort)}
         style={{ width: "100vw", height: "100vh" }}
-        // initialViewState={{
-        //   longitude: long,
-        //   latitude: lat,
-        //   zoom: 10
-        // }}
-        // style={{width: "100vw", height: "100vh"}}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={MAPBOX_TOKEN}
       >
@@ -111,6 +97,7 @@ function App() {
           }}
         />
         <FullscreenControl />
+        <NameSearchLocation long={setLong} lat={setLat} />
       </Map>
     </>
   );
