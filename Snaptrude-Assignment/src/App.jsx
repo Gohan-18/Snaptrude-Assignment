@@ -15,7 +15,7 @@ const MAPBOX_TOKEN = import.meta.env.VITE_MAP_TOKEN;
 
 
 function App() {
-
+  
   const [long, setLong] = useState(77.216721);
   const [lat, setLat] = useState(28.6448);
 
@@ -53,22 +53,26 @@ function App() {
           top: "20px",
           left: "20px",
           borderRadius: "20px",
-          padding: "20px",
+          padding: "40px",
         }}
       >
+        <label style={{fontSize: '15px',width: '100%', textAlign: 'start'}} >Longitude</label>
         <input
           type="text"
           name="longi"
           placeholder="Longitude..."
           value={long}
-          required
+          disabled
+          style={{padding: '5px 10px 5px 0px', border: 'none', borderBottom: '2px solid gray', width:'100%'}}
         />
+        <label style={{fontSize: '15px',width: '100%', textAlign: 'start'}}>Latitude</label>
         <input
           type="text"
           name="lati"
           placeholder="Latitude..."
           value={lat}
-          required
+          disabled
+          style={{padding: '5px 10px 5px 0px', border: 'none', borderBottom: '2px solid gray', width:'100%'}}
         />
         {/* <button type="submit">Go</button> */}
       </form>
