@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MapBoxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { useControl } from 'react-map-gl';
+import { AppContext } from '../App';
 
-const NameSearchLocation = ({long, lat}) => {
+const NameSearchLocation = () => {
+
+  const { setLong, setLat } = useContext(AppContext);
 
     const geocoder = new MapBoxGeocoder({
         accessToken: import.meta.env.VITE_MAP_TOKEN,
@@ -19,8 +22,8 @@ const NameSearchLocation = ({long, lat}) => {
     geocoder.on('result', (e) => {
         const coords = e.result.geometry.coordinates;
         console.log(coords)
-        long(coords[0])
-        lat(coords[1])
+        setLong(coords[0])
+        setLat(coords[1])
     })
 
   return (

@@ -6,19 +6,25 @@ import Map, {
   Marker,
   NavigationControl,
 } from "react-map-gl";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NameSearchLocation from "./NameSearchLocation";
 import Canvas from "./SceneComponent";
 import Babylon from "./Babylon";
 import { useNavigate } from "react-router-dom";
 import html2Canvas from "html2canvas";
+import { AppContext } from "../App";
 
 // const MAPBOX_TOKEN ="pk.eyJ1IjoicHJhYi1oYXQxOCIsImEiOiJjbGZiNjVuaGQyeGxnM29yMDU3MGQzaGVhIn0.8eObBAjrqScgVVrmE-pbOQ";
-const MAPBOX_TOKEN = import.meta.env.VITE_MAP_TOKEN;
+export const MAPBOX_TOKEN = import.meta.env.VITE_MAP_TOKEN;
 
 function MapBox() {
-  const [long, setLong] = useState(77.216721);
-  const [lat, setLat] = useState(28.6448);
+
+    const { long, lat, setLong, setLat } = useContext(AppContext);
+
+    // console.log(long, lat)
+
+//   const [long, setLong] = useState(77.216721);
+//   const [lat, setLat] = useState(28.6448);
   const navigate = useNavigate();
 
   const [viewPort, setViewPort] = useState({
@@ -49,9 +55,9 @@ function MapBox() {
     //     document.body.appendChild(canvas);
     // })
 
-    const image = await fetch(
-      `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${long},${lat},10,0,0/1200x1200?access_token=${MAPBOX_TOKEN}`
-    )
+    // const image = await fetch(
+    //   `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${long},${lat},10,0,0/1200x1200?access_token=${MAPBOX_TOKEN}`
+    // )
     // .then((item) => {
     //     console.log(item)
     //     let a = document.createElement('a');
@@ -62,16 +68,20 @@ function MapBox() {
 
     // const img = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${long},${lat},10,0,60/600x600?access_token=${MAPBOX_TOKEN}`
 
-    // console.log(image)
+    // // console.log(image)
 
-    const blob = await image.blob();
-    const url = window.URL.createObjectURL(blob);
-    let a = document.createElement('a');
-    a.href = url
-    a.download = "MapImage"
-    // a.target = '_blank'
-    // console.log(a)
-    a.click();
+    // const blob = await image.blob();
+    // const url = window.URL.createObjectURL(blob);
+    // let a = document.createElement('a');
+    // a.href = url
+    // a.download = "MapImage"
+    // // a.target = '_blank'
+    // // console.log(a)
+    // a.click();
+
+    // a.onclick = () => {
+    //     browser.downloads.showDefaultFolder();
+    // }
 
 
 

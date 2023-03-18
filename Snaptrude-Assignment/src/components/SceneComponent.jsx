@@ -40,5 +40,5 @@ export default ({ antialias, engineOptions, adaptToDeviceRatio, sceneOptions, on
     };
   }, [antialias, engineOptions, adaptToDeviceRatio, sceneOptions, onRender, onSceneReady]);
 
-  return <canvas ref={reactCanvas} {...rest} />;
+  return <canvas style={{width: '80%', height: '80%'}} ref={reactCanvas} {...rest} />;
 };
