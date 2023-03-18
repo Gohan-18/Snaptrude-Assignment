@@ -12,7 +12,7 @@ const NameSearchLocation = ({long, lat}) => {
         // mapboxgl: mapboxgl
     })
 
-    console.log(long)
+    // console.log(long)
 
     useControl(() => geocoder)
 
