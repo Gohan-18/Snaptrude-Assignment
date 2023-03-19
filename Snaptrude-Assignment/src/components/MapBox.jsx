@@ -1,4 +1,3 @@
-// import "../"?
 import mapboxgl from "mapbox-gl"; // or "const mapboxgl = require('mapbox-gl');"
 import Map, {
   FullscreenControl,
@@ -8,13 +7,10 @@ import Map, {
 } from "react-map-gl";
 import { useContext, useState } from "react";
 import NameSearchLocation from "./NameSearchLocation";
-import Canvas from "./SceneComponent";
-import Babylon from "./Babylon";
 import { useNavigate } from "react-router-dom";
 import html2Canvas from "html2canvas";
 import { AppContext } from "../App";
 
-// const MAPBOX_TOKEN ="pk.eyJ1IjoicHJhYi1oYXQxOCIsImEiOiJjbGZiNjVuaGQyeGxnM29yMDU3MGQzaGVhIn0.8eObBAjrqScgVVrmE-pbOQ";
 export const MAPBOX_TOKEN = import.meta.env.VITE_MAP_TOKEN;
 
 function MapBox() {
@@ -184,8 +180,6 @@ function MapBox() {
           Snapshot
         </button>
       </Map>
-      {/* <Babylon/> */}
-      {/* <Canvas/> */}
     </>
   );
 }
